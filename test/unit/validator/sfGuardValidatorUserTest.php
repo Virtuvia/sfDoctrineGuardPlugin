@@ -6,7 +6,7 @@
 
 require_once dirname(__DIR__, 2) . '/bootstrap/unit.php';
 
-$t = new lime_test(9);
+$t = new lime_test(10);
 
 class MockUser
 {
@@ -111,7 +111,8 @@ catch (sfValidatorErrorSchema $error)
   $t->pass('->clean() throws an error if no username is provided');
 
   $t->ok(isset($error['username']), '->clean() throws a "username" error if no username is provided');
-  $t->is($error['username']->getCode(), 'invalid', '->clean() throws an "invalid" error if no username is provided');
+  $t->is($error['username']->getCode(), 0, '->clean() throws a "0" error code if no username is provided');
+  $t->is($error['username']->getCodeString(), 'invalid', '->clean() throws an "invalid" error string if no username is provided');
 }
 
 $validator->setOption('throw_global_error', true);

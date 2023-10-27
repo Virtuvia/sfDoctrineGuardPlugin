@@ -49,4 +49,4 @@ catch (Exception $e)
   $t->fail('->retrieveByUsername() does not throw an exception if username is null');
 }
 
-$t->isa_ok(@PluginsfGuardUserTable::retrieveByUsername('active_user'), 'sfGuardUser', '->retrieveByUsername() can be called statically (BC)');
+$t->isa_ok(\Doctrine_Core::getTable(\sfGuardUser::class)->retrieveByUsername('active_user'), \sfGuardUser::class, '->retrieveByUsername() can be called statically (BC)');
