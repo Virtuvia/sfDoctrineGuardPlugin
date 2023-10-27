@@ -3,7 +3,8 @@
 /**
  * PluginsfGuardPermissionForm tests.
  */
-include dirname(__FILE__).'/../../../../../../test/bootstrap/unit.php';
+
+require_once dirname(__DIR__, 3) . '/bootstrap/unit.php';
 
 $databaseManager = new sfDatabaseManager($configuration);
 

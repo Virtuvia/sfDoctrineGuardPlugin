@@ -3,9 +3,10 @@
 /**
  * sfGuardValidatorUser tests.
  */
-include dirname(__FILE__).'/../../../../../test/bootstrap/unit.php';
 
-$t = new lime_test(7);
+require_once dirname(__DIR__, 2) . '/bootstrap/unit.php';
+
+$t = new lime_test(9);
 
 class MockUser
 {
@@ -30,7 +31,7 @@ class MockTable
 {
   static public $user = null;
 
-  public function retrieveByUsername()
+  public function retrieveByUsername($username)
   {
     return self::$user->username == $username ? self::$user : null;
   }

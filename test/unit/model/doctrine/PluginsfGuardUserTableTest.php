@@ -3,17 +3,16 @@
 /**
  * PluginsfGuardUserTable tests.
  */
-include dirname(__FILE__).'/../../../../../../test/bootstrap/unit.php';
+
+require_once dirname(__DIR__, 3) . '/bootstrap/unit.php';
 
 $t = new lime_test(8);
 
-$databaseManager = new sfDatabaseManager($configuration);
-
 $table = Doctrine_Core::getTable('sfGuardUser');
-$table->createQuery()
-  ->delete()
+$users = $table->createQuery()
   ->whereIn('username', array('inactive_user', 'active_user'))
   ->execute();
+$users->delete();
 
 $inactiveUser = new sfGuardUser();
 $inactiveUser->email_address = 'email@test.com';
