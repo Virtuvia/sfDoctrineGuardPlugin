@@ -221,7 +221,7 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
    *
    * @return string
    */
-  public function __toString()
+  public function __toString(): string
   {
     return $this->getGuardUser()->__toString();
   }
@@ -282,7 +282,7 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
    * Returns whether or not the user belongs to the given group.
    *
    * @param string $name The group name
-   * 
+   *
    * @return boolean
    */
   public function hasGroup($name)
@@ -314,7 +314,7 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
    * Returns whether or not the user has the given permission.
    *
    * @param string $name The permission name
-   * 
+   *
    * @return string
    */
   public function hasPermission($name)
