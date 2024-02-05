@@ -69,14 +69,14 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
   /**
    * Returns whether or not the user has the given credential.
    *
-   * @param string  $credential The credential name
+   * @param string  $credentials The credential name
    * @param boolean $useAnd     Whether or not to use an AND condition
    *
    * @return boolean
    */
-  public function hasCredential($credential, $useAnd = true)
+  public function hasCredential($credentials, $useAnd = true)
   {
-    if (empty($credential))
+    if (empty($credentials))
     {
       return true;
     }
@@ -91,7 +91,7 @@ class sfGuardSecurityUser extends sfBasicSecurityUser
       return true;
     }
 
-    return parent::hasCredential($credential, $useAnd);
+    return parent::hasCredential($credentials, $useAnd);
   }
 
   /**
