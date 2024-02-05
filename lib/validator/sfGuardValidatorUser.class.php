@@ -26,10 +26,10 @@ class sfGuardValidatorUser extends sfValidatorBase
     $this->setMessage('invalid', 'The username and/or password is invalid.');
   }
 
-  protected function doClean($values)
+  protected function doClean($value)
   {
-    $username = isset($values[$this->getOption('username_field')]) ? $values[$this->getOption('username_field')] : '';
-    $password = isset($values[$this->getOption('password_field')]) ? $values[$this->getOption('password_field')] : '';
+    $username = $value[$this->getOption('username_field')] ?? '';
+    $password = $value[$this->getOption('password_field')] ?? '';
 
     $allowEmail = sfConfig::get('app_sf_guard_plugin_allow_login_with_email', true);
     $method = $allowEmail ? 'retrieveByUsernameOrEmailAddress' : 'retrieveByUsername';
@@ -49,7 +49,7 @@ class sfGuardValidatorUser extends sfValidatorBase
           // password is ok?
           if ($user->getIsActive() && $user->checkPassword($password))
           {
-            return array_merge($values, array('user' => $user));
+            return array_merge($value, array('user' => $user));
           }
        }
     }
